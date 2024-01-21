@@ -8,7 +8,7 @@ const SideBar = () => {
   return (
     <>
     {sidebarStatus.sideBar &&
-    <div className=" w-60 p-5 shadow-lg h-auto">
+    <div className=" w-60 p-8 shadow-lg h-auto fixed bg-white mt-16 z-0 pt-6">
       <ul>
         <li><Link to="/">Home</Link></li>
         <li>Shorts</li>

@@ -10,15 +10,15 @@ const VideoContainer = () => {
  const fetchData = await fetch(YOUTUBE_API+process.env.REACT_APP_GOOGLE_API);
  const jsonData =await fetchData.json();
  setVideos(jsonData.items);
- console.log(jsonData.items[0]);
+ //console.log(jsonData.items[0]);
  
   }
   useEffect(() => {
     getYoutubeVideos();
   },[])
   return (
-    <div className='flex flex-wrap'>
-    {videos && videos.map((video) => <Link to={"/watch?v="+video.id}><VideoCrd video={video}/></Link> )
+    <div className='flex flex-wrap w-full px-3 justify-around'>
+    {videos && videos.map((video) => <div key={video.id}><Link to={"/watch?v="+video.id}><VideoCrd video={video}/></Link></div> )
     
     }
     </div>
