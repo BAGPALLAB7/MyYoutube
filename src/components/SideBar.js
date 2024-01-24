@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const sidebarStatus = useSelector((store) => store.appConfig);
-  console.log(("sidebarStatus",sidebarStatus.sideBar));
+  //console.log(("sidebarStatus",sidebarStatus.sideBar));
   return (
     <>
     {sidebarStatus.sideBar &&

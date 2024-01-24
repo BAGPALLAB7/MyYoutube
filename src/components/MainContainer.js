@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ButtonLists from './ButtonLists';
 import VideoContainer from './VideoContainer';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { showSideBar } from '../utils/Store/configSlice';
 
 const MainContainer = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    
+  dispatch(showSideBar());
+  },[]);
   const sideBarStatus = useSelector((store) => store.appConfig);
   return (
     <>{

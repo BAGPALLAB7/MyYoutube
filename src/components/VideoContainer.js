@@ -2,14 +2,20 @@ import React, { useEffect, useState } from 'react'
 import VideoCrd from './VideoCrd';
 import { YOUTUBE_API } from '../utils/constaint';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadVideos } from '../utils/Store/mainVideoSlice';
 
 const VideoContainer = () => {
-  const [videos, setVideos] = useState([])
+  //const [videos, setVideos] = useState([])
+  const dispatch = useDispatch();
+  const allStoredVideos = useSelector((store) => store.allVideos.videos);
 
   const getYoutubeVideos = async () => {
  const fetchData = await fetch(YOUTUBE_API+process.env.REACT_APP_GOOGLE_API);
  const jsonData =await fetchData.json();
- setVideos(jsonData.items);
+ console.log("popolar vide data", jsonData);
+ dispatch(loadVideos(jsonData.items));
+//  setVideos(jsonData.items);
  //console.log(jsonData.items[0]);
  
   }
@@ -18,7 +24,7 @@ const VideoContainer = () => {
   },[])
   return (
     <div className='flex flex-wrap w-full px-3 justify-around'>
-    {videos && videos.map((video) => <div key={video.id}><Link to={"/watch?v="+video.id}><VideoCrd video={video}/></Link></div> )
+    {allStoredVideos && allStoredVideos.map((video) => <div key={video.id}><Link to={"/watch?v="+video.id}><VideoCrd video={video}/></Link></div> )
     
     }
     </div>
