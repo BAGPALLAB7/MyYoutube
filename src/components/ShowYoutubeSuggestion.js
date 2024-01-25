@@ -1,12 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { YOUTUBE_SEARCH_KEYWORD } from "../utils/constaint";
-import { useDispatch } from "react-redux";
-import { loadVideos } from "../utils/Store/mainVideoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { loadQueryVideos } from "../utils/Store/mainVideoSlice";
+import {
+  closeBar,
+  openBarClicked,
+  setSearchSuggestion,
+} from "../utils/Store/suggestionBarSlice";
 
 const ShowSuggestion = ({ Data }) => {
   const dispatch = useDispatch();
-  const [searchSuggestion, setSearchSuggestion] = useState(null);
-  console.log("searchSuggestion", searchSuggestion);
+
+  const show = useSelector((store) => store.suggestionBar.barStatus);
+  const clicked = useSelector((store) => store.suggestionBar.barClicked);
+  //console.log("clicked", clicked);
+  //console.log("show", show);
+  const searchSuggestion = useSelector(
+    (store) => store.suggestionBar.searchSuggestion
+  );
+  //console.log("searchSuggestion", searchSuggestion);
   const fetchRelatedVideos = async () => {
     const data = await fetch(
       YOUTUBE_SEARCH_KEYWORD +
@@ -15,20 +27,20 @@ const ShowSuggestion = ({ Data }) => {
         process.env.REACT_APP_GOOGLE_API
     );
     const jsondata = await data.json();
-    dispatch(loadVideos(jsondata.items));
-    console.log(jsondata);
+    dispatch(closeBar());
+    dispatch(loadQueryVideos(jsondata.items));
+    //console.log(jsondata.items[0]);
   };
   useEffect(() => {
-    
     searchSuggestion && fetchRelatedVideos();
-    console.log("searvideo data", searchSuggestion);
+    //console.log("searvideo data", searchSuggestion);
   }, [searchSuggestion]);
   const ShowListOfResults = ({ d }) => {
     return (
       <ul className="p-0" key={d}>
         <li
           className="hover:bg-gray-200 p-1 rounded-md"
-          onClick={() => setSearchSuggestion(d)}
+          onClick={() => dispatch(setSearchSuggestion(d))}
         >
           {d}
         </li>
@@ -39,11 +51,19 @@ const ShowSuggestion = ({ Data }) => {
     return;
   }
   return (
-    <div className="fixed bg-white top-14 left-[27%] p-3 border rounded-lg w-4/12">
-      {Data.map((item) => (
-        <ShowListOfResults d={item} />
-      ))}
-    </div>
+    <>
+      {show && (
+        <div
+          className="fixed bg-white top-14 left-[27%] p-3 border rounded-lg w-4/12"
+          tabIndex={1}
+          onClick={() => dispatch(openBarClicked())}
+        >
+          {Data.map((item) => (
+            <ShowListOfResults d={item} />
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 

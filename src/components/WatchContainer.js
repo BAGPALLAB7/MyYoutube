@@ -23,6 +23,7 @@ const WatchContainer = () => {
             height="515"
             src={"https://www.youtube.com/embed/" + videoId+"?autoplay=1&mute=0"}
             allow="autoplay"
+            allowFullScreen
           ></iframe>
         </div>
         <div className="w-full p-1 ">

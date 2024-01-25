@@ -1,19 +1,18 @@
-import React from 'react'
+import React from "react";
+import { BUTTON_LISTS } from "../utils/constaint";
+import ButtonComponent from "./ButtonComponent";
+
 
 const ButtonLists = () => {
+  
+  
   return (
-    <div className='w-full mb-5 pl-5'>
-      <button className='px-4 py-1 rounded-md bg-gray-200 text-gray-800 mx-2'>All</button>
-      <button className='px-4 py-1 rounded-md bg-gray-200 text-gray-800 mx-2'>Trending</button>
-      <button className='px-4 py-1 rounded-md bg-gray-200 text-gray-800 mx-2'>Game</button>
-      <button className='px-4 py-1 rounded-md bg-gray-200 text-gray-800 mx-2'>All</button>
-      <button className='px-4 py-1 rounded-md bg-gray-200 text-gray-800 mx-2'>Trending</button>
-      <button className='px-4 py-1 rounded-md bg-gray-200 text-gray-800 mx-2'>Game</button>
-      <button className='px-4 py-1 rounded-md bg-gray-200 text-gray-800 mx-2'>All</button>
-      <button className='px-4 py-1 rounded-md bg-gray-200 text-gray-800 mx-2'>Trending</button>
-      <button className='px-4 py-1 rounded-md bg-gray-200 text-gray-800 mx-2'>Game</button>
+    <div className=" mb-5 pl-5 overflow-auto scroll-p-0 h-14 w-full flex flex-row">
+      {BUTTON_LISTS.map((button) => (
+        <ButtonComponent button={button} key={button}/>
+      ))}
     </div>
-  )
-}
+  );
+};
 
 export default ButtonLists;

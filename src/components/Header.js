@@ -5,12 +5,15 @@ import { YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/constaint";
 import ShowYoutubeSuggestion from "./ShowYoutubeSuggestion";
 import { addSuggestionCache } from "../utils/Store/searchSlice";
 import { Link } from "react-router-dom";
+import { closeBar, openBar, setSearchSuggestion } from "../utils/Store/suggestionBarSlice";
 
 const Header = () => {
   const cacheData = useSelector((store) => store.searchCache);
+
+  
+
   const [searchInput, setSearchInput] = useState("");
   const [sugggestionData, setSuggestionData] = useState("");
-  const [isShowSuggestion, setIsShowSuggestion] = useState(false);
 
   const input = useRef();
   const showSuggestion = () => {
@@ -52,11 +55,9 @@ const Header = () => {
   return (
     <>
       <div className="grid grid-flow-col py-3 content-center items-center fixed w-screen bg-white z-10">
-        {sugggestionData && isShowSuggestion ? (
+        
           <ShowYoutubeSuggestion Data={sugggestionData}  />
-        ) : (
-          <ShowYoutubeSuggestion Data={sugggestionData}  />
-        )}
+        
         <div className="flex col-span-1 items-center">
           <img
             src="https://uxwing.com/wp-content/themes/uxwing/download/web-app-development/hamburger-menu-icon.png"
@@ -77,10 +78,11 @@ const Header = () => {
             <input
               ref={input}
               type="text"
+              
               className="border-slate-300 border w-4/6 py-2 pl-5 rounded-l-full"
               onChange={showSuggestion}
-              onFocus={() => setIsShowSuggestion(true)}
-              onBlur={() => setIsShowSuggestion(false)}
+              onFocus={() => dispatch(openBar())}
+              
             />
             <button className="rounded-r-full bg-slate-200 border-slate-200 border px-4 py-2">
               🔍

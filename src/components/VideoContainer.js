@@ -1,34 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import VideoCrd from './VideoCrd';
-import { YOUTUBE_API } from '../utils/constaint';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadVideos } from '../utils/Store/mainVideoSlice';
+import React, { useEffect, useState } from "react";
+import { YOUTUBE_API } from "../utils/constaint";
+import { useDispatch, useSelector } from "react-redux";
+import { loadVideos } from "../utils/Store/mainVideoSlice";
+import { closeBar } from "../utils/Store/suggestionBarSlice";
+import Video from "./Video";
 
 const VideoContainer = () => {
   //const [videos, setVideos] = useState([])
   const dispatch = useDispatch();
-  const allStoredVideos = useSelector((store) => store.allVideos.videos);
+  const allStoredVideos = useSelector((store) => store.allVideos.homeVideos);
+  //console.log("all stored videos from", allStoredVideos);
+  const queryVideos = useSelector((store) => store.allVideos.queryVideos);
+  //console.log("all query videos from video container", queryVideos);
 
   const getYoutubeVideos = async () => {
- const fetchData = await fetch(YOUTUBE_API+process.env.REACT_APP_GOOGLE_API);
- const jsonData =await fetchData.json();
- console.log("popolar vide data", jsonData);
- dispatch(loadVideos(jsonData.items));
-//  setVideos(jsonData.items);
- //console.log(jsonData.items[0]);
- 
-  }
+    const fetchData = await fetch(
+      YOUTUBE_API + process.env.REACT_APP_GOOGLE_API
+    );
+    const jsonData = await fetchData.json();
+    //console.log("popolar vide data single", jsonData.items[0]);
+    dispatch(closeBar());
+    dispatch(loadVideos(jsonData.items));
+    //  setVideos(jsonData.items);
+  };
   useEffect(() => {
-    getYoutubeVideos();
-  },[])
+     getYoutubeVideos();
+  }, []);
+  useEffect(()=>{
+console.log("query videos updated");
+  },[queryVideos])
   return (
-    <div className='flex flex-wrap w-full px-3 justify-around'>
-    {allStoredVideos && allStoredVideos.map((video) => <div key={video.id}><Link to={"/watch?v="+video.id}><VideoCrd video={video}/></Link></div> )
-    
-    }
+    <div>
+      {(queryVideos || allStoredVideos) && queryVideos ? 
+        <Video videos={queryVideos} />
+       : 
+        <Video videos={allStoredVideos} />
+      }
     </div>
-  )
-}
+  );
+};
 
 export default VideoContainer;

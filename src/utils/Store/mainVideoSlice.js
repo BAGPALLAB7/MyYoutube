@@ -3,14 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 const mainVideoSlice = createSlice({
     name: 'videos',
     initialState: {
-        videos: null,
+        homeVideos: null,
+        queryVideos: null,
     },
     reducers: {
         loadVideos: (state, action) => {
-            state.videos = action.payload;
+            state.homeVideos = action.payload;
+        },
+        loadQueryVideos: (state, action) => {
+            state.queryVideos = action.payload;
         }
     }
 });
 
-export const {loadVideos} = mainVideoSlice.actions;
+export const {loadVideos, loadQueryVideos} = mainVideoSlice.actions;
 export default mainVideoSlice.reducer;
