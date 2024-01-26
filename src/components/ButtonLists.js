@@ -7,7 +7,7 @@ const ButtonLists = () => {
   
   
   return (
-    <div className=" mb-5 pl-5 overflow-auto scroll-p-0 h-14 w-full flex flex-row">
+    <div className="  pl-5 overflow-auto scroll-p-0 h-14 w-full flex flex-row">
       {BUTTON_LISTS.map((button) => (
         <ButtonComponent button={button} key={button}/>
       ))}

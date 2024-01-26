@@ -10,6 +10,7 @@ import {
   openBar,
   setSearchSuggestion,
 } from "../utils/Store/suggestionBarSlice";
+import { loadQueryVideos } from "../utils/Store/mainVideoSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -61,6 +62,11 @@ const Header = () => {
   const toggleShow = () => {
     dispatch(toggleSideBar());
   };
+  const videos = useSelector((store) => store.allVideos.homeVideos);
+
+  const handleLogoClick =() => {
+    dispatch(loadQueryVideos(videos));
+  }
 
   //console.log("sugggestionData", sugggestionData);
   return (
@@ -70,8 +76,8 @@ const Header = () => {
       <div className="flex col-span-1 items-center ">
         
         {smallDevice ? (
-          <Link to="/">
-          <div className="ml-3">
+        
+          <div className="ml-3" onClick={handleLogoClick}>
             <svg 
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -110,7 +116,7 @@ const Header = () => {
               ></path>
             </svg>{" "}
             </div>
-          </Link>
+          
         ) : (
           <>
           <img
@@ -129,14 +135,14 @@ const Header = () => {
           </>
         )}
       </div>
-      <div className="flex  col-span-7 mx-auto w-full md:h-auto justify-around bg-yellow-200 md:justify-center items-center">
-        <div className={"w-full flex "+ (showSearchBar? "justify-center" : "justify-end")}>
+      <div className="flex  col-span-7 w-full md:h-auto    " >
+        <div className={"w-full flex " + ((smallDevice && !showSearchBar) ? " justify-end" : "justify-center ")}>
           {smallDevice ? (
             showSearchBar && (
               <input
                 ref={input}
                 type="text"
-                className="border-slate-300 border w-4/6  pl-5 rounded-l-full border-r-0"
+                className="border-slate-300 border w-5/6  pl-5 rounded-l-full border-r-0"
                 onChange={showSuggestion}
                 onFocus={() => dispatch(openBar())}
               />
@@ -160,7 +166,6 @@ const Header = () => {
               </button>
             ) : (
               <button
-                className="  p-2 "
                 onClick={() => dispatch(toggleSearchBar())}
               >
                 🔍
@@ -176,7 +181,7 @@ const Header = () => {
           )}
         </div>
       </div>
-      <div className={"col-span-"+ (smallDevice? "1" : "4") +" flex justify-end mr-8"}>
+      <div className={ (smallDevice ? "col-span-1" : "col-span-4") +" flex justify-end mr-8"}>
         <img
           src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
           alt="user-logo"

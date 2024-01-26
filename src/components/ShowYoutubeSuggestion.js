@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadQueryVideos } from "../utils/Store/mainVideoSlice";
 import {
   closeBar,
-  openBarClicked,
   setSearchSuggestion,
 } from "../utils/Store/suggestionBarSlice";
 
@@ -12,7 +11,9 @@ const ShowSuggestion = ({ Data }) => {
   const dispatch = useDispatch();
 
   const show = useSelector((store) => store.suggestionBar.barStatus);
-  const clicked = useSelector((store) => store.suggestionBar.barClicked);
+  const showSearchBar = useSelector((store) => store.appConfig.mobileSearchBar);
+  const smallDevice = useSelector((store) => store.appConfig.smallDevice);
+
   //console.log("clicked", clicked);
   //console.log("show", show);
   const searchSuggestion = useSelector(
@@ -52,16 +53,26 @@ const ShowSuggestion = ({ Data }) => {
   }
   return (
     <>
-      {show && (
-        <div
-          className="fixed bg-white top-14 left-[27%] p-3 border rounded-lg w-4/12"
-          tabIndex={1}
-          onClick={() => dispatch(openBarClicked())}
-        >
-          {Data.map((item) => (
-            <ShowListOfResults d={item} />
-          ))}
-        </div>
+      {show ? (
+        smallDevice ? (
+           showSearchBar && <div
+            className="fixed bg-white top-14  p-3 border rounded-lg w-8/12 left-[15%]"
+          >
+            {Data.map((item) => (
+              <ShowListOfResults d={item} />
+            ))}
+          </div>
+        ) : (
+          <div
+            className="fixed bg-white top-14 left-[27%] p-3 border rounded-lg w-4/12"
+          >
+            {Data.map((item) => (
+              <ShowListOfResults d={item} />
+            ))}
+          </div>
+        )
+      ) : (
+        <></>
       )}
     </>
   );
