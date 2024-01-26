@@ -6,6 +6,7 @@ import {
   closeBar,
   setSearchSuggestion,
 } from "../utils/Store/suggestionBarSlice";
+import { Link } from "react-router-dom";
 
 const ShowSuggestion = ({ Data }) => {
   const dispatch = useDispatch();
@@ -39,12 +40,14 @@ const ShowSuggestion = ({ Data }) => {
   const ShowListOfResults = ({ d }) => {
     return (
       <ul className="p-0" key={d}>
+      <Link to="/">
         <li
           className="hover:bg-gray-200 p-1 rounded-md"
           onClick={() => dispatch(setSearchSuggestion(d))}
         >
           {d}
         </li>
+        </Link>
       </ul>
     );
   };

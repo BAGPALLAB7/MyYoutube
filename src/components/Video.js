@@ -10,14 +10,14 @@ const Video = ({videos}) => {
     <div className="flex flex-wrap w-full px-2 justify-around m-1">
       {
         videos.map((video) => (
-          <div >
+          <div key={video?.id?.videoId || video?.id}>
             <Link
               to={
                 "/watch?v=" +
                 (video?.id?.videoId ? video?.id?.videoId : video?.id)
               }
             >
-              <VideoCrd video={video} key={video?.id?.videoId || video?.id}/>
+              <VideoCrd video={video} />
             </Link>
           </div>
         ))}
