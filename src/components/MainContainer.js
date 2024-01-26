@@ -3,8 +3,11 @@ import ButtonLists from "./ButtonLists";
 import VideoContainer from "./VideoContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { showSideBar } from "../utils/Store/configSlice";
+import useCheckDevice from "../customHooks/useCheckDevice";
 
 const MainContainer = () => {
+  useCheckDevice();  
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(showSideBar());
@@ -22,7 +25,7 @@ const MainContainer = () => {
           </div>
         </div>
       ) : (
-        <div className="w-full pt-24 ">
+        <div className="w-full pt-20 ">
           <ButtonLists />
           <VideoContainer />
         </div>

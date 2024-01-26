@@ -29,18 +29,21 @@ const ChatContainer = () => {
       clearInterval(timmer);
     };
   }, []);
-  
+
   const handleSubmitChat = (e) => {
     e.preventDefault();
     dispatch(addLiveChat({ name: "bagpallab7", message: chatInput }));
     //console.log(chatInput);
-    setChatInput("")
-    
-
+    setChatInput("");
   };
+  useEffect(() => {
+    if (document.body.clientWidth <= 425) {
+      setShowChat(false);
+    }
+  }, []);
 
   return (
-    <>
+    <div className="w-full">
       {showChat && (
         <div className="w-11/12 border border-b-0 border-black shadow-lg h-[30rem] rounded-t-lg p-3 m-3 mb-0 flex-col">
           <div className=" p-3 h-full  overflow-y-scroll flex flex-col-reverse">
@@ -63,14 +66,19 @@ const ChatContainer = () => {
               <input
                 type="text"
                 value={chatInput}
-                className="border w-10/12"
+                className="border w-10/12 text-sm md:text-lg"
                 onChange={(e) => setChatInput(e.target.value)}
               />
-              <button className="w-2/12 bg-gray-300" onClick={handleSubmitChat}>Send</button>
+              <button
+                className="w-2/12 bg-gray-300 text-sm md:text-lg"
+                onClick={handleSubmitChat}
+              >
+                Send
+              </button>
             </form>
             <button
               onClick={() => setShowChat(!showChat)}
-              className="bg-red-100"
+              className="bg-red-100 text-xs md:text-lg"
             >
               Hide ⬆
             </button>
@@ -78,13 +86,13 @@ const ChatContainer = () => {
         ) : (
           <button
             onClick={() => setShowChat(!showChat)}
-            className="bg-green-100"
+            className="bg-green-100 text-xs md:text-lg"
           >
             Show chat ⬇
           </button>
         )}{" "}
       </div>
-    </>
+    </div>
   );
 };
 

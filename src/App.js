@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import appStore from "./utils/Store/appStore";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
@@ -25,7 +25,6 @@ const appRouter = createBrowserRouter([
 ])
 
 function App() {
-  
 
   return (
     <Provider store={appStore}>

@@ -15,23 +15,24 @@ const WatchContainer = () => {
     dispatch(closeSideBar());
   }, []);
   return (
-    <div className="mt-16 flex w-screen">
-      <div className="w-8/12">
-        <div className="p-5 ">
+    <div className="mt-16 flex flex-col  w-screen">
+      <div className="w-screen flex flex-col md:flex-row ">
+        <div className="flex w-full md:w-8/12 p-1 md:p-5 h-50 md:h-auto">
           <iframe
-            className="rounded-2xl w-full"
-            height="515"
-            src={"https://www.youtube.com/embed/" + videoId+"?autoplay=1&mute=0"}
+            className="rounded-lg md:rounded-2xl w-full h-72 md:h-auto"
+            src={
+              "https://www.youtube.com/embed/" + videoId + "?autoplay=1&mute=0"
+            }
             allow="autoplay"
             allowFullScreen
           ></iframe>
         </div>
-        <div className="w-full p-1 ">
-          <CommentContainer />
+        <div className="w-full md:w-4/12 mt-4">
+          <ChatContainer />
         </div>
       </div>
-      <div className="w-4/12 mt-4">
-        <ChatContainer />
+      <div className="w-screen md:w-8/12 p-1 ">
+        <CommentContainer />
       </div>
     </div>
   );

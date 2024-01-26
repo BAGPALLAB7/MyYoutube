@@ -7,12 +7,12 @@ const LiveChat = ({ name, message }) => {
         <img
           src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
           alt="user-logo"
-          className="w-8 h-8"
+          className="md:w-8 md:h-8 w-4 h-4"
         />
       </div>
       <div className="w-11/12">
-        <span className="text-gray-700 pr-3 text-lg">{name}</span>
-        <span className="text-sm">{message}</span>
+        <span className="text-gray-700 pr-3 md:text-lg text-sm">{name}</span>
+        <span className="text-xs md:text-sm">{message}</span>
       </div>
     </div>
   );

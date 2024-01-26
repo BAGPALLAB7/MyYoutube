@@ -30,7 +30,7 @@ const VideoContainer = () => {
 console.log("query videos updated");
   },[queryVideos])
   return (
-    <div>
+    <div className="w-screen md:w-auto bg-yellow-200">
       {(queryVideos || allStoredVideos) && queryVideos ? 
         <Video videos={queryVideos} />
        : 

@@ -7,9 +7,9 @@ import suggestionBarSlice from "./suggestionBarSlice";
 
 const appStore = configureStore({
     reducer: {
-        suggestionBar: suggestionBarSlice,
-        allVideos: mainVideoSlice,
         appConfig: configReducer,
+        allVideos: mainVideoSlice,
+        suggestionBar: suggestionBarSlice,
         searchCache: searchSlice,
         liveChat: liveChatSlice,
 
