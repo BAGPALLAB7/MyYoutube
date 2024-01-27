@@ -37,8 +37,9 @@ const WatchContainer = () => {
           <iframe
             className="rounded-lg md:rounded-2xl w-full h-72 md:h-[500px]"
             src={
-              "https://www.youtube.com/embed/" + videoId + "?autoplay=1&mute=0"
+              "https://www.youtube.com/embed/" + videoId + "?autoplay=1&mute=0&playsinline=1"
             }
+          
             allow="autoplay"
             allowFullScreen
           ></iframe>
@@ -65,18 +66,18 @@ const WatchContainer = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-full my-3 md:w-6/12 flex md:justify-end h-10 justify-around text-sm">
-                <button className="px-2 md:px-4 bg-gray-200 text-black rounded-full md:mx-2 flex items-center">
+              <div className="w-full my-3 md:w-6/12 flex md:justify-end h-8 md:h-10 justify-around text-sm">
+                <button className="px-3 md:px-4 bg-gray-200 text-black rounded-full md:mx-2 flex items-center">
                   <img
-                    className="mx-2 w-6 h-6 "
+                    className="mr-1 w-6 h-6 "
                     src="https://img.icons8.com/material-rounded/24/facebook-like--v1.png"
                     alt="facebook-like--v1"
                   />
                   Like
                 </button>
-                <button className="px-2 md:px-4 bg-gray-200 text-black rounded-full md:mx-2 flex  items-center text-sm">
+                <button className="px-3 md:px-4 bg-gray-200 text-black rounded-full md:mx-2 flex  items-center text-sm">
                   <svg
-                    className="mx-2 w-6 h-6"
+                    className="mr-1 w-6 h-6"
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"
                     y="0px"
@@ -86,9 +87,9 @@ const WatchContainer = () => {
                   </svg>
                   Share
                 </button>
-                <button className="px-2 md:px-4 bg-gray-200 text-black rounded-full md:mx-2 flex items-center text-sm">
+                <button className="px-3 md:px-4 bg-gray-200 text-black rounded-full md:mx-2 flex items-center text-sm">
                   <img
-                    className="mx-2 w-6 h-6"
+                    className="mr-1 w-6 h-6"
                     src="https://img.icons8.com/sf-regular/48/download.png"
                     alt="download"
                   />
