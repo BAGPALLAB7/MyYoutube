@@ -14,7 +14,7 @@ const MainContainer = () => {
   }, []);
   const sideBarStatus = useSelector((store) => store.appConfig);
   return (
-    <div className="w-full">
+    <div className="w-screen ">
       {sideBarStatus.sideBar ? (
         <div className=" pt-20 ml-60">
           <div className=" z-50 mx-3 over">

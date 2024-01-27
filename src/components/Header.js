@@ -71,12 +71,13 @@ const Header = () => {
 
   //console.log("sugggestionData", sugggestionData);
   return (
-    <div className="grid grid-flow-col py-3 mx-0   fixed w-screen  z-10">
+    <div className="grid grid-flow-col py-3 mx-0 bg-white  fixed w-screen  z-10">
       <ShowYoutubeSuggestion Data={sugggestionData} />
 
       <div className="flex col-span-1 items-center ">
         {smallDevice ? (
           showSearchBar ? (
+            <Link to="/">
             <div className="ml-3" onClick={handleLogoClick}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -116,6 +117,7 @@ const Header = () => {
                 ></path>
               </svg>{" "}
             </div>
+            </Link>
           ) : (
             <Link to="/">
               <div className="ml-3 ">

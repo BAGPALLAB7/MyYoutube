@@ -30,7 +30,7 @@ const VideoContainer = () => {
 console.log("query videos updated");
   },[queryVideos])
   return (
-    <div className="w-screen md:w-auto">
+    <div className="flex w-screen md:w-auto justify-center items-center mx-0 px-0">
       {(queryVideos || allStoredVideos) && queryVideos ? 
         <Video videos={queryVideos} />
        : 

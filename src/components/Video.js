@@ -7,7 +7,7 @@ const Video = ({videos}) => {
   return (
     <div>
     {videos && 
-    <div className="flex flex-wrap w-full px-2 justify-around m-1">
+    <div className="flex flex-wrap w-full px-2 justify-around">
       {
         videos.map((video) => (
           <div key={video?.id?.videoId || video?.id}>

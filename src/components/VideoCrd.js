@@ -15,8 +15,8 @@ const VideoCrd = ({ video }) => {
   return (
     <>
       {smallDevice ? (
-        <div className="w-screen ">
-          <div className="m-2 rounded-lg shadow-lg p-2  border mb-5 h-80">
+        <div className="w-full  m-0 p-0">
+          <div className="w-full rounded-lg shadow-lg p-2 border mb-5 h-80 ">
             <img
               className="rounded-md h-44 w-full"
               src={thumbnails?.medium?.url}

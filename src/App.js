@@ -10,27 +10,27 @@ import WatchContainer from "./components/WatchContainer";
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Body/>,
+    element: <Body />,
     children: [
       {
         path: "/",
-        element: <MainContainer/>
+        element: <MainContainer />,
       },
       {
         path: "watch",
-        element: <WatchContainer/>
-      }
-    ]
-  }
-])
+        element: <WatchContainer />,
+      },
+    ],
+  },
+]);
 
 function App() {
+  
 
   return (
     <Provider store={appStore}>
       <div className="">
-       
-        <RouterProvider router={appRouter}/>
+        <RouterProvider router={appRouter} />
       </div>
     </Provider>
   );
