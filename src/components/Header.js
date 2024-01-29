@@ -5,7 +5,7 @@ import {
   toggleSearchBar,
   toggleSideBar,
 } from "../utils/Store/configSlice";
-import { YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/constaint";
+import { USER_LOGO, YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/constaint";
 import ShowYoutubeSuggestion from "./ShowYoutubeSuggestion";
 import { addSuggestionCache } from "../utils/Store/searchSlice";
 import { Link } from "react-router-dom";
@@ -231,7 +231,7 @@ const Header = () => {
       >
         <img
           className="w-8 h-8"
-          src="https://img.icons8.com/ios-glyphs/30/user-male-circle.png"
+          src={USER_LOGO}
           alt="user-male-circle"
         />
       </div>

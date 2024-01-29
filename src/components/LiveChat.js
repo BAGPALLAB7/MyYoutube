@@ -1,11 +1,12 @@
 import React from "react";
+import { USER_LOGO } from "../utils/constaint";
 
 const LiveChat = ({ name, message }) => {
   return (
     <div className="w-auto text-lg  flex  p-2 bg-slate-100 rounded-md my-1">
       <div className="pr-2 w-1/12">
         <img
-          src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+          src={USER_LOGO}
           alt="user-logo"
           className="md:w-8 md:h-8 w-4 h-4"
         />

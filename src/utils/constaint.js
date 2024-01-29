@@ -6,3 +6,5 @@ export const YOUTUBE_SEARCH_KEYWORD = "https://youtube.googleapis.com/youtube/v3
 export const YOUTUBE_SINGLE_VIDEO = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=";
 
 export const BUTTON_LISTS = ["All","Trending","News", "Live","Sports", "Music", "Game", "Tech","Education","Entertainment","Funny","Cricket","Football","International",];
+
+export const USER_LOGO = "https://img.icons8.com/ios-glyphs/30/user-male-circle.png";
