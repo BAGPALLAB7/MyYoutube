@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 const VideoCrd = ({ video }) => {
   const { snippet } = video;
   let { thumbnails, title, channelTitle, publishedAt } = snippet;
-  if (title.length > 50) {
-    title = title.substring(0, 50) + "...";
+  if (title.length > 40) {
+    title = title.substring(0, 40) + "...";
   }
   if (channelTitle.length > 20) {
     channelTitle = channelTitle.substring(0, 20) + "...";
@@ -15,10 +15,10 @@ const VideoCrd = ({ video }) => {
   return (
     <>
       {smallDevice ? (
-        <div className="w-full  m-0 p-0">
-          <div className="w-full rounded-lg shadow-lg p-2 border mb-5 h-80 ">
+        <div className=" w-screen m-0 p-0">
+          <div className="w-full rounded-lg shadow-lg p-2 border mb-5 h-80 object-fill">
             <img
-              className="rounded-md h-44 w-full"
+              className="w-full rounded-md h-44  "
               src={thumbnails?.medium?.url}
               alt="thumbnail"
             />
